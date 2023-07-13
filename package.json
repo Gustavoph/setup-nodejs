@@ -1,0 +1,34 @@
+{
+  "name": "setup-nodejs",
+  "version": "0.0.1",
+  "description": "setup for application with nodejs",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gustavoph/setup-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "fastify",
+    "typescript",
+    "docker"
+  ],
+  "author": "Gustavo Oliveira <gusta.coliveira07@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gustavoph/setup-nodejs/issues"
+  },
+  "homepage": "https://github.com/Gustavoph/setup-nodejs#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "fastify": "^4.19.2"
+  }
+}

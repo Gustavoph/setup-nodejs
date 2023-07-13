@@ -1,0 +1,30 @@
+version: '3.8'
+
+volumes:
+  database-vol:
+
+networks:
+  setup-nodejs:
+    driver: bridge
+
+services:
+  api:
+    image: setup-nodejs
+    ports:
+      - 3000:3000
+    networks:
+      - setup-nodejs
+    depends_on:
+      - db
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    networks:
+    - setup-nodejs
+    volumes:
+      - database-vol:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=database
