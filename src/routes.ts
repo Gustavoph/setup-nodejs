@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify'
+import { type FastifyInstance } from 'fastify'
 
 export const appRoutes = (app: FastifyInstance) => {
   app.get('/', (request, reply) => {

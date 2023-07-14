@@ -10,7 +10,8 @@
     "test:integration": "npm test -- --watch -c jest.integration.config.ts",
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint src __test__ --fix --ext .js,.ts"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,10 @@
   },
   "homepage": "https://github.com/Gustavoph/setup-nodejs#readme",
   "lint-staged": {
-    "*.ts": ["npm run test:staged"]
+    "*.ts": [
+      "npm run lint:fix",
+      "npm run test:staged"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
@@ -44,6 +48,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "eslint-config-standard-with-typescript": "^36.0.1",
     "fastify": "^4.19.2",
     "ts-node": "^10.9.1"
   }
