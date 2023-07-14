@@ -4,24 +4,32 @@ volumes:
   database-vol:
 
 networks:
-  setup-nodejs:
-    driver: bridge
+  web-app:
 
 services:
   api:
-    image: setup-nodejs
+    build: .
+    container_name: api
+    restart: always
     ports:
       - 3000:3000
-    networks:
-      - setup-nodejs
     depends_on:
       - db
+    volumes:
+      - .:/app
+    networks:
+      - web-app
+    environment:
+      - DATABASE_URL=postgresql://admin:123456@db:5432/database?schema=public
+
   db:
     image: postgres
+    container_name: db
+    restart: unless-stopped
+    networks:
+      - web-app
     ports:
       - 5432:5432
-    networks:
-    - setup-nodejs
     volumes:
       - database-vol:/var/lib/postgresql/data
     environment:
